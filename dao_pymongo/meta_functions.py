@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def test_installation():
+    print("package dao_pymongo correctly installed")
+
+
 def is_compound(object):
     if (
         isinstance(object, list)
