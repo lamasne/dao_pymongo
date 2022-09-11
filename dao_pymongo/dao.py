@@ -4,7 +4,7 @@ import itertools
 from numpy import isin
 import pandas as pd
 from pymongo import MongoClient, UpdateOne
-import meta_functions as meta_fcts
+import dao_pymongo.meta_functions as meta_fcts
 from alive_progress import alive_bar
 
 # singleton to only open connection once
