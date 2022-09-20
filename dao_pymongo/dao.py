@@ -323,12 +323,12 @@ class Dao:
 
         raise Exception("Wrong format of objects to be saved")
 
-    def backup_db(cls):
-        """copy db_name to /db_dump"""
-        os.system("mongodump --db=" + cls._db.name + " --out=db_dump")
+    def backup_db(cls, path="db_backup"):
+        """copy db_name to /path"""
+        os.system("mongodump --db=" + cls._db.name + " --out=" + path)
 
-    def restore_backup(cls):
-        """copy db_backup into db_name"""
+    def restore_backup(cls, path="db_backup"):
+        """copy db_backup into path/db_name"""
         db_name = cls._db.name
         cls._client.drop_database(db_name)
         print("Dropped database")
@@ -339,8 +339,9 @@ class Dao:
             + ".*"
             + " --nsTo "
             + db_name
-            + ".*"
-            + " db_dump/"
+            + ".* "
+            + path
+            + "/"
         )
 
     def drop_db(cls):
